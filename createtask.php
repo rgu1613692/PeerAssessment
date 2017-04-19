@@ -30,7 +30,7 @@ if(!isset($_SESSION['userSession'])||($_SESSION['active'] == false)||($_SESSION[
                 echo $_SESSION['coursefailed'];
                 unset($_SESSION['coursefailed']);
             } ?>
-            <form id="login" action ="../../Desktop/MustaphAkinsanmi/myRGU2016/CMM007IntranetSystemDevelopment/courseworkPart2/create-task.php" method="post">
+            <form id="login" action ="create-task.php" method="post">
                 <div class="form-group">
                     <label for="courseCode">Question</label>
                     <textarea type="text" class="form-control" id="question" name="question" placeholder="Enter question"></textarea>

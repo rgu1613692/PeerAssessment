@@ -18,7 +18,7 @@ if (isset($_POST['make'])) {
     <div class="row">
         <div id="" class="col-md-6 col-md-offset-3">
 
-            <form id="login" action ="../../Desktop/MustaphAkinsanmi/myRGU2016/CMM007IntranetSystemDevelopment/courseworkPart2/submitcourse.php" method="post">
+            <form id="login" action ="submitcourse.php" method="post">
                 <div class="form-group">
                     <label for="coursename">Course Name</label>
                     <input type="text" disabled class="form-control" id="coursename" name="coursename" value='<?php echo "$coursename";?>'></input>
