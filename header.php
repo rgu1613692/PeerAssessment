@@ -34,7 +34,7 @@ session_start();
         <ul class="nav navbar-nav">
         <?php
         if(isset($_SESSION['userSession'])&&$_SESSION['admin'] == false){
-           echo ">Home</a></li>";
+           echo "<li><a href=\"studentlanding.php\">Home</a></li>";
         }
         if(isset($_SESSION['userSession'])&&$_SESSION['admin'] == true){
             echo "<li><a href=\"adminlanding.php\">Home</a></li>";
