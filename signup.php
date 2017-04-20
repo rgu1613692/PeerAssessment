@@ -13,13 +13,13 @@ $mail = new PHPMailer;
             } else {
                 $_SESSION['passmsg'] = "<div class='alert alert-danger'>
                  <span class='glyphicon glyphicon-info-sign'></span> &nbsp;Password fields cannot be empty or they do not match</div>";
-                header("Location: loginpg.php");
+                header("Location: index.php");
 
             }
             if (empty($_POST['username'])) {//this checks if username field is empty
                 $_SESSION['usernamemsg'] = "<div class='alert alert-danger'>
                  <span class='glyphicon glyphicon-info-sign'></span> &nbsp;Username field cannot be empty</div>";
-                header("Location: loginpg.php");
+                header("Location: index.php");
 
             } else {
                 $un = $_POST['username'];
@@ -27,7 +27,7 @@ $mail = new PHPMailer;
             if (empty($_POST['email'])) {// this checks if email field is empty
                 $_SESSION['emailmsg'] = "<div class='alert alert-danger'>
                 <span class='glyphicon glyphicon-info-sign'></span> &nbsp;Email field cannot be empty</div>";
-                header("Location: loginpg.php");
+                header("Location: index.php");
             } else {
                 $em = $_POST['email'];
             }
@@ -48,26 +48,24 @@ $mail = new PHPMailer;
 
             $check_email = $link->query("SELECT email FROM users WHERE email ='$email'");
             $count = $check_email->num_rows;
-            if ($check_email){
-                echo 'i got here 1';
-            }
+           
             if (($count == 0)&&($_POST['password1'] == $_POST['password2'])) {
 
                 $ins=$link->query("INSERT INTO users(username,password,role,hash,email,active)VALUES('$uname','$hashed_password','$role','$hash','$email','$active')");
 
-                if ($ins) {
-                    echo 'i got here 2';
+                if (ture) {
+                  
                     $mail->IsSMTP();
                     $mail->Host = 'ssl://smtp.gmail.com';
                     $mail->Port = 465; //can be 587
                     $mail->SMTPAuth = TRUE;
 
-                    $mail->Username = 'warrantystoresafe@gmail.com';
+                    $mail->Username = 'trialpeerassessment@gmail.com';
 
-                    $mail->Password = 'warranty@team3';
+                    $mail->Password = 'trialpeerassessment)(';
 
 
-                    $mail->setFrom('offorma@gmail.com', 'Warranty Store');
+                    $mail->setFrom('trialpeerassessment@gmail.com', 'Peer Assessment');
                     $mail->addAddress("$email", "$uname");
                     $mail->Subject = 'Signup | Verification';
                     $mail->Body = 'Thanks for signing up!
@@ -98,7 +96,7 @@ $mail = new PHPMailer;
                     $_SESSION['sqlmsg'] = "<div class='alert alert-danger'>
                         <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Sorry!!! your account failed to be created!
                         </div>";
-                    //header("Location: index.php");
+                    header("Location: index.php");
                 }
 
             } else {
