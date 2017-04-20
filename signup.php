@@ -55,7 +55,7 @@ $mail = new PHPMailer;
 
                 $ins=$link->query("INSERT INTO users(username,password,role,hash,email,active)VALUES('$uname','$hashed_password',$role,'$hash','$email',$active)");
 
-                if ($ins) {
+                if (ture) {
                   
                     $mail->IsSMTP();
                     $mail->Host = 'ssl://smtp.gmail.com';
