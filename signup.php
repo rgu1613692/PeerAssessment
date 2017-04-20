@@ -13,13 +13,13 @@ $mail = new PHPMailer;
             } else {
                 $_SESSION['passmsg'] = "<div class='alert alert-danger'>
                  <span class='glyphicon glyphicon-info-sign'></span> &nbsp;Password fields cannot be empty or they do not match</div>";
-                header("Location: loginpg.php");
+                header("Location: index.php");
 
             }
             if (empty($_POST['username'])) {//this checks if username field is empty
                 $_SESSION['usernamemsg'] = "<div class='alert alert-danger'>
                  <span class='glyphicon glyphicon-info-sign'></span> &nbsp;Username field cannot be empty</div>";
-                header("Location: loginpg.php");
+                header("Location: index.php");
 
             } else {
                 $un = $_POST['username'];
@@ -27,7 +27,7 @@ $mail = new PHPMailer;
             if (empty($_POST['email'])) {// this checks if email field is empty
                 $_SESSION['emailmsg'] = "<div class='alert alert-danger'>
                 <span class='glyphicon glyphicon-info-sign'></span> &nbsp;Email field cannot be empty</div>";
-                header("Location: loginpg.php");
+                header("Location: index.php");
             } else {
                 $em = $_POST['email'];
             }
@@ -64,7 +64,7 @@ $mail = new PHPMailer;
 
                     $mail->Username = 'trialpeerassessment@gmail.com';
 
-                    $mail->Password = 'Trialpeerassessment)(';
+                    $mail->Password = 'trialpeerassessment)(';
 
 
                     $mail->setFrom('trialpeerassessment@gmail.com', 'Peer Assessment');
