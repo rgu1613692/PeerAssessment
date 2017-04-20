@@ -62,9 +62,9 @@ $mail = new PHPMailer;
                     $mail->Port = 465; //can be 587
                     $mail->SMTPAuth = TRUE;
 
-                    $mail->Username = 'warrantystoresafe@gmail.com';
+                    $mail->Username = 'trialpeerassessment@gmail.com';
 
-                    $mail->Password = 'warranty@team3';
+                    $mail->Password = 'Trialpeerassessment)(';
 
 
                     $mail->setFrom('offorma@gmail.com', 'Warranty Store');
