@@ -56,7 +56,7 @@ $mail = new PHPMailer;
                 $ins=$link->query("INSERT INTO users(username,password,role,hash,email,active)VALUES('$uname','$hashed_password','$role','$hash','$email','$active')");
 
                 if ($ins) {
-                    echo 'i got here 2';
+                  
                     $mail->IsSMTP();
                     $mail->Host = 'ssl://smtp.gmail.com';
                     $mail->Port = 465; //can be 587
@@ -98,7 +98,7 @@ $mail = new PHPMailer;
                     $_SESSION['sqlmsg'] = "<div class='alert alert-danger'>
                         <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Sorry!!! your account failed to be created!
                         </div>";
-                    //header("Location: index.php");
+                    header("Location: index.php");
                 }
 
             } else {
