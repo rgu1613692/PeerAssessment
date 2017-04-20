@@ -53,7 +53,7 @@ $mail = new PHPMailer;
             }
             if (($count == 0)&&($_POST['password1'] == $_POST['password2'])) {
 
-                $ins=$link->query("INSERT INTO users(username,password,role,hash,email,active)VALUES('$uname','$hashed_password','$role','$hash','$email','$active')");
+                $ins=$link->query("INSERT INTO users(username,password,role,hash,email,active)VALUES('$uname','$hashed_password',$role,'$hash','$email',$active)");
 
                 if ($ins) {
                   
