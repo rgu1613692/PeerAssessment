@@ -80,6 +80,7 @@ $mail = new PHPMailer;
  
                         Please click this link to activate your account:
                         http://myassessment.azurewebsites.net/verify.php?email=' . $email . '&hash=' . $hash . '';
+                        $mail->send();
                     if (!$mail->send()) {
                         $_SESSION['mailmsg'] = "<div class='alert alert-success'>
                              <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Failed to send Verification Email !
