@@ -13,13 +13,13 @@ $mail = new PHPMailer;
             } else {
                 $_SESSION['passmsg'] = "<div class='alert alert-danger'>
                  <span class='glyphicon glyphicon-info-sign'></span> &nbsp;Password fields cannot be empty or they do not match</div>";
-                header("Location: index.php");
+                header("Location: loginpg.php");
 
             }
             if (empty($_POST['username'])) {//this checks if username field is empty
                 $_SESSION['usernamemsg'] = "<div class='alert alert-danger'>
                  <span class='glyphicon glyphicon-info-sign'></span> &nbsp;Username field cannot be empty</div>";
-                header("Location: index.php");
+                header("Location: loginpg.php");
 
             } else {
                 $un = $_POST['username'];
@@ -27,7 +27,7 @@ $mail = new PHPMailer;
             if (empty($_POST['email'])) {// this checks if email field is empty
                 $_SESSION['emailmsg'] = "<div class='alert alert-danger'>
                 <span class='glyphicon glyphicon-info-sign'></span> &nbsp;Email field cannot be empty</div>";
-                header("Location: index.php");
+                header("Location: loginpg.php");
             } else {
                 $em = $_POST['email'];
             }
@@ -48,7 +48,9 @@ $mail = new PHPMailer;
 
             $check_email = $link->query("SELECT email FROM users WHERE email ='$email'");
             $count = $check_email->num_rows;
-            
+            if ($check_email){
+                echo 'i got here 1';
+            }
             if (($count == 0)&&($_POST['password1'] == $_POST['password2'])) {
 
                 $ins=$link->query("INSERT INTO users(username,password,role,hash,email,active)VALUES('$uname','$hashed_password','$role','$hash','$email','$active')");
@@ -60,12 +62,12 @@ $mail = new PHPMailer;
                     $mail->Port = 465; //can be 587
                     $mail->SMTPAuth = TRUE;
 
-                    $mail->Username = 'trialpeerassessment@gmail.com';
+                    $mail->Username = 'warrantystoresafe@gmail.com';
 
-                    $mail->Password = 'Trialpeerassessment)(';
+                    $mail->Password = 'warranty@team3';
 
 
-                    $mail->setFrom('trialpeerassessment@gmail.com', 'Peer Assessment Tool');
+                    $mail->setFrom('offorma@gmail.com', 'Peer Assessment');
                     $mail->addAddress("$email", "$uname");
                     $mail->Subject = 'Signup | Verification';
                     $mail->Body = 'Thanks for signing up!
@@ -78,7 +80,6 @@ $mail = new PHPMailer;
  
                         Please click this link to activate your account:
                         http://myassessment.azurewebsites.net/verify.php?email=' . $email . '&hash=' . $hash . '';
-                        $mail->send();
                     if (!$mail->send()) {
                         $_SESSION['mailmsg'] = "<div class='alert alert-success'>
                              <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Failed to send Verification Email !
@@ -97,7 +98,7 @@ $mail = new PHPMailer;
                     $_SESSION['sqlmsg'] = "<div class='alert alert-danger'>
                         <span class='glyphicon glyphicon-info-sign'></span> &nbsp; Sorry!!! your account failed to be created!
                         </div>";
-                    header("Location: index.php");
+                    //header("Location: index.php");
                 }
 
             } else {
