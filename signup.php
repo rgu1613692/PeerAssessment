@@ -48,9 +48,7 @@ $mail = new PHPMailer;
 
             $check_email = $link->query("SELECT email FROM users WHERE email ='$email'");
             $count = $check_email->num_rows;
-            if ($check_email){
-                echo 'i got here 1';
-            }
+            
             if (($count == 0)&&($_POST['password1'] == $_POST['password2'])) {
 
                 $ins=$link->query("INSERT INTO users(username,password,role,hash,email,active)VALUES('$uname','$hashed_password','$role','$hash','$email','$active')");
