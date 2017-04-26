@@ -26,21 +26,21 @@ $req = $_GET['query'];
                     $jason  = array( "message"=> "No Records Found for Your Query" );
                     echo $jason;
                 }
-            }elseif(($request == "students")  ){
-                $query = "SELECT firstname, lastname, email, address, student_ID FROM  student";
-                $result = mysqli_query($link, $query);
-                if(mysqli_num_rows($result)>0) {
-                    $count= 0;
-                    while( $res=  mysqli_fetch_assoc($result)){
-                        $prite[$count]=$res;
-                        $count++;
+            }elseif(($request=="users")) {
+                $query = "SELECT userid, username, email FROM users";
+                $result = $link->query($query);
+                if($result->num_rows >0) {
+                    $arrayIndex= 0;
+                    while($single=$result->fetch_assoc()){
+                        $dataArray[$arrayIndex]= $single;
+                        $arrayIndex++;
                     }
-                    $pry=json_encode($prite);
-                    $pry = indent($pry);
-                    echo $pry;
+                    $jason=json_encode($dataArray);
+                    $jason = indent($jason);
+                    echo $jason;
                 }else{
-                    $pry  = array( "firstname"=>NULL, "lastname" => NULL,  "email" =>NULL,  "address"=>NULL,  "student_ID"=>NULL, "message"=> "No Records Available");
-                    echo $pry;
+                    $jason  = array( "message"=> "No Records Found for Your Query" );
+                    echo $jason;
                 }
             }elseif(($req == "staff")){
                 $query = "SELECT firstname, lastname, email,role, address, staff_ID FROM  staff";
