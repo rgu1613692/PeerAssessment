@@ -13,7 +13,7 @@ $req = $_GET['query'];
             if(($request=="course")) {
                 $query = "SELECT * FROM course";
                 $result = $link->query($query);
-                if($result->num_rows()>0) {
+                if($result->num_rows >0) {
                     $arrayIndex= 0;
                     while($single=$result->fetch_assoc()){
                         $dataArray[$arrayIndex]= $single;
