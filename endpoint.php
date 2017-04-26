@@ -11,7 +11,7 @@ $req = $_GET['query'];
         include('db.php');
         if (!empty($request)){
             if(($request=="course")) {
-                $query = "SELECT * FROM  course";
+                $query = "SELECT * FROM course";
                 $result = $link->query($query);
                 if($result->num_rows()>0) {
                     $arrayIndex= 0;
