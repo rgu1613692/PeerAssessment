@@ -11,6 +11,7 @@ $req = $_GET['query'];
         include('db.php');
         if (!empty($request)) {
             if (($request == "course")) {
+                //going to this url will return all course in the db http://myassessment.azurewebsites.net/endpoint.php?query=course
                 $query = "SELECT * FROM course";
                 $result = $link->query($query);
                 if ($result->num_rows > 0) {
@@ -27,6 +28,7 @@ $req = $_GET['query'];
                     echo $jason;
                 }
             } elseif (($request == "users")) {
+                //going to this url will return all users in the db http://myassessment.azurewebsites.net/endpoint.php?query=users
                 $query = "SELECT userid, username, email FROM users";
                 $result = $link->query($query);
                 if ($result->num_rows > 0) {
@@ -43,6 +45,7 @@ $req = $_GET['query'];
                     echo $jason;
                 }
             } elseif (($request == "task")) {
+                //going to this url will return all tasks in the db http://myassessment.azurewebsites.net/endpoint.php?query=task
                 $query = "SELECT * FROM task";
                 $result = $link->query($query);
                 if ($result->num_rows > 0) {
