@@ -9,57 +9,56 @@ $req = $_GET['query'];
         $request = strtolower($req);
         header('Content-Type: application/json');
         include('db.php');
-        if (!empty($request)){
-            if(($request=="course")) {
+        if (!empty($request)) {
+            if (($request == "course")) {
                 $query = "SELECT * FROM course";
                 $result = $link->query($query);
-                if($result->num_rows >0) {
-                    $arrayIndex= 0;
-                    while($single=$result->fetch_assoc()){
-                        $dataArray[$arrayIndex]= $single;
+                if ($result->num_rows > 0) {
+                    $arrayIndex = 0;
+                    while ($single = $result->fetch_assoc()) {
+                        $dataArray[$arrayIndex] = $single;
                         $arrayIndex++;
                     }
-                    $jason=json_encode($dataArray);
+                    $jason = json_encode($dataArray);
                     $jason = indent($jason);
                     echo $jason;
-                }else{
-                    $jason  = array( "message"=> "No Records Found for Your Query" );
+                } else {
+                    $jason = array("message" => "No Records Found for Your Query");
                     echo $jason;
                 }
-            }elseif(($request=="users")) {
+            } elseif (($request == "users")) {
                 $query = "SELECT userid, username, email FROM users";
                 $result = $link->query($query);
-                if($result->num_rows >0) {
-                    $arrayIndex= 0;
-                    while($single=$result->fetch_assoc()){
-                        $dataArray[$arrayIndex]= $single;
+                if ($result->num_rows > 0) {
+                    $arrayIndex = 0;
+                    while ($single = $result->fetch_assoc()) {
+                        $dataArray[$arrayIndex] = $single;
                         $arrayIndex++;
                     }
-                    $jason=json_encode($dataArray);
+                    $jason = json_encode($dataArray);
                     $jason = indent($jason);
                     echo $jason;
-                }else{
-                    $jason  = array( "message"=> "No Records Found for Your Query" );
+                } else {
+                    $jason = array("message" => "No Records Found for Your Query");
                     echo $jason;
                 }
-            }elseif(($req == "staff")){
-                $query = "SELECT firstname, lastname, email,role, address, staff_ID FROM  staff";
-                $result = mysqli_query($link, $query);
-                if(mysqli_num_rows($result)>0) {
-                    $count= 0;
-                    while( $res=  mysqli_fetch_assoc($result)){
-                        $prite[$count]=$res;
-                        $count++;
+            } elseif (($request == "task")) {
+                $query = "SELECT * FROM task";
+                $result = $link->query($query);
+                if ($result->num_rows > 0) {
+                    $arrayIndex = 0;
+                    while ($single = $result->fetch_assoc()) {
+                        $dataArray[$arrayIndex] = $single;
+                        $arrayIndex++;
                     }
-                    $pry=json_encode($prite);
-                    $pry = indent($pry);
-                    echo $pry;
-                }else{
-                    $pry  = array( "firstname"=>NULL, "lastname" => NULL,  "email" =>NULL,  "role"=>NULL,  "address"=>NULL,  "student_ID"=>NULL, "message"=> "No Records Available");
-                    echo $pry;
+                    $jason = json_encode($dataArray);
+                    $jason = indent($jason);
+                    echo $jason;
+                } else {
+                    $jason = array("message" => "No Records Found for Your Query");
+                    echo $jason;
                 }
             }
-        }else{
         }
 function indent($json)
 {
