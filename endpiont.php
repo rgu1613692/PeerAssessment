@@ -27,9 +27,9 @@ if (true) {
                 $arrayIndex++;
             }
             $jason = json_encode($dataArray);
-            $jason = indent($jason);
+            //$jason = indent($jason);
             echo $jason;
-        }}/* else {
+        }}}/* else {
             $jason = array("message" => "No Records Found for Your Query");
             echo $jason;
         }
