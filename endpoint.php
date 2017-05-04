@@ -29,7 +29,7 @@ if ($method=='GET') {
             $jason = json_encode($dataArray);
             echo $jason;
         }
-    } elseif (sizeof($requ) < 1) {
+    } elseif ((sizeof($requ) < 1)||(sizeof($requ)>1)) {
         echo 'Please provide a parameter in the URL';
     }
 }
