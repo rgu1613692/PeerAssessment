@@ -55,7 +55,7 @@ if ($method=='POST') {
 }
 if ($method=='PUT') {
     header('Content-Type: application/text');
-    //going to this url will create a new course in the db http://myassessment.azurewebsites.net/endpoint.php/course/courseid/coursecode/coursename
+    //going to this url will update a course in the db with the given course id http://myassessment.azurewebsites.net/endpoint.php/course/courseid/coursecode/coursename
     if (sizeof($requ) == 4) {
         if ($requ[0] == "course"){
             $query ="UPDATE course SET coursename='$requ[3]',code='$requ[2]' WHERE courseid='$requ[1]'";
@@ -75,7 +75,7 @@ if ($method=='PUT') {
 }
 if ($method=='DELETE') {
     header('Content-Type: application/text');
-    //going to this url will create a new course in the db http://myassessment.azurewebsites.net/endpoint.php/course/courseid
+    //going to this url will delete a  course in the db with the given course id  http://myassessment.azurewebsites.net/endpoint.php/course/courseid
     if (sizeof($requ) == 4) {
         if ($requ[0] == "course"){
 
