@@ -12,10 +12,11 @@ $method = $_SERVER['REQUEST_METHOD'];
 $requ = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
 $requ = array_map('strtolower', $requ);
  print_r($requ);
-header('Content-Type: application/json');
+
 include('db.php');
 if ($method=='GET') {
     if (($requ[0] == "course")) {
+        header('Content-Type: application/json');
         //going to this url will return all course in the db http://myassessment.azurewebsites.net/endpoint.php/course
         $query = "SELECT * FROM course";
         $result = $link->query($query);
@@ -34,6 +35,7 @@ if ($method=='GET') {
     }
 }
     if ($method=='POST') {
+        header('Content-Type: application/text');
         //going to this url will create a new course in the db http://myassessment.azurewebsites.net/endpoint.php/course/coursecode/coursename
         if (($requ->length ==3)) {
             if ($requ[0]==course){
@@ -41,6 +43,7 @@ if ($method=='GET') {
              $result = $link->query($query);
                 if ($result) {
                     header("HTTP/1.1 200 OK");
+                    echo 'success';
                     }
                  }
 
