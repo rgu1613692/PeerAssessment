@@ -15,7 +15,7 @@ $requ = array_map('strtolower', $requ);
 
 include('db.php');
 if ($method=='GET') {
-    if (($requ[0] == "course")) {
+    if ($requ[0] == "course") {
         header('Content-Type: application/json');
         //going to this url will return all course in the db http://myassessment.azurewebsites.net/endpoint.php/course
         $query = "SELECT * FROM course";
@@ -36,8 +36,8 @@ if ($method=='GET') {
     if ($method=='POST') {
         header('Content-Type: application/text');
         //going to this url will create a new course in the db http://myassessment.azurewebsites.net/endpoint.php/course/coursecode/coursename
-        if (($requ->length ==3)) {
-            if ($requ[0]=="course"){
+        if ($requ->length == 3) {
+            if ($requ[0] == "course"){
                 $query ="INSERT INTO course(code,coursename)VALUES('$requ[1]','$requ[2]')";
                 $result = $link->query($query);
                 if ($result) {
