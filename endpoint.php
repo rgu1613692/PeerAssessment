@@ -32,6 +32,9 @@ if ($method=='GET') {
     } elseif ((empty($requ[0]))||(sizeof($requ)>1)) {
         echo 'Please provide the correct parameter in the URL';
     }
+ elseif ($requ[0]!= "course") {
+        echo 'Please the parameter must end with /course';
+    }
 }
 if ($method=='POST') {
         header('Content-Type: application/text');
