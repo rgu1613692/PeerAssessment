@@ -67,7 +67,7 @@ $mail = new PHPMailer;
                     $mail->Password = 'warranty@team3';
 
 
-                    $mail->setFrom('offorma@gmail.com', 'Warranty Store');
+                    $mail->setFrom('offorma@gmail.com', 'Peer Assessment');
                     $mail->addAddress("$email", "$uname");
                     $mail->Subject = 'Signup | Verification';
                     $mail->Body = 'Thanks for signing up!
