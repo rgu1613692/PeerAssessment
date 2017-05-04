@@ -6,6 +6,8 @@
  * Time: 13:02
  */
 
+
+
 var_dump($_SERVER['PATH_INFO']);
 $url = explode ("/", substr($_SERVER['PATH_INFO'], 1));
 
