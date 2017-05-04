@@ -39,19 +39,13 @@ if ($method=='GET') {
             if ($requ[0]==course){
                 $query ="INSERT INTO course(code,coursename)VALUES('$requ[1]','$requ[2]')";
              $result = $link->query($query);
-                if ($result->num_rows > 0) {
-                    $arrayIndex = 0;
-                    while ($single = $result->fetch_assoc()) {
-                        $dataArray[$arrayIndex] = $single;
-                        $arrayIndex++;
+                if ($result) {
+                    header("HTTP/1.1 200 OK");
                     }
-                    $jason = json_encode($dataArray);
-                    //$jason = indent($jason);
-                    echo $jason;
                  }
 
             }
-        }elseif ($requ->length !=3){
+        elseif ($requ->length !=3){
             echo 'Please provide the required parameters in the URL in the format /course/coursecode/coursename';
         }
 }/* else {
