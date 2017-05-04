@@ -43,7 +43,9 @@ if ($method=='GET') {
                 if ($result) {
                     header("HTTP/1.1 200 OK");
                     echo 'success';
-                    }
+                    }else{
+                    echo "something went wrong";
+                }
                  }
 
             }
