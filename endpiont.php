@@ -8,10 +8,10 @@
 
 
 
-var_dump($_SERVER['PATH_INFO']);
-$url = explode ("/", substr($_SERVER['PATH_INFO'], 1));
-
-print_r($url);
+$request_verb = $_SERVER['REQUEST_METHOD'];
+$requ = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
+$requ = array_map('strtolower', $requ);
+echo $requ;
 
 header('Content-Type: application/json');
 include('db.php');
