@@ -38,7 +38,7 @@ if ($method=='GET') {
         //going to this url will create a new course in the db http://myassessment.azurewebsites.net/endpoint.php/course/coursecode/coursename
         if (($requ->length ==3)) {
             if ($requ[0]==course){
-                $query ="INSERT INTO course(code,coursename)VALUES( '$requ[1]', '$requ[2]')";
+                $query ="INSERT INTO course(courseid,code,coursename)VALUES('','$requ[1]','$requ[2]')";
                 $result = $link->query($query);
                 if ($result) {
                     header("HTTP/1.1 200 OK");
