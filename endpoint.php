@@ -16,7 +16,7 @@ header('Content-Type: application/json');
 include('db.php');
 if ($method=='GET') {
     if (($requ[0] == "course")) {
-        //going to this url will return all course in the db http://myassessment.azurewebsites.net/endpoint.php?query=course
+        //going to this url will return all course in the db http://myassessment.azurewebsites.net/endpoint.php/course
         $query = "SELECT * FROM course";
         $result = $link->query($query);
         if ($result->num_rows > 0) {
@@ -29,9 +29,31 @@ if ($method=='GET') {
             //$jason = indent($jason);
             echo $jason;
         }
-    }elseif ($requ->length <1){
+    } elseif ($requ->length < 1) {
         echo 'Please provide a parameter in the URL';
     }
+}
+    if ($method=='POST') {
+        //going to this url will create a new course in the db http://myassessment.azurewebsites.net/endpoint.php/course/coursecode/coursename
+        if (($requ->length ==3)) {
+            if ($requ[0]==course){
+                $query ="INSERT INTO course(code,coursename)VALUES('$requ[1]','$requ[2]')";
+             $result = $link->query($query);
+                if ($result->num_rows > 0) {
+                    $arrayIndex = 0;
+                    while ($single = $result->fetch_assoc()) {
+                        $dataArray[$arrayIndex] = $single;
+                        $arrayIndex++;
+                    }
+                    $jason = json_encode($dataArray);
+                    //$jason = indent($jason);
+                    echo $jason;
+                 }
+
+            }
+        }elseif ($requ->length !=3){
+            echo 'Please provide the required parameters in the URL in the format /course/coursecode/coursename';
+        }
 }/* else {
             $jason = array("message" => "No Records Found for Your Query");
             echo $jason;
