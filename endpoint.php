@@ -29,14 +29,14 @@ if ($method=='GET') {
             $jason = json_encode($dataArray);
             echo $jason;
         }
-    } elseif ($requ->length < 1) {
+    } elseif (sizeof($requ) < 1) {
         echo 'Please provide a parameter in the URL';
     }
 }
-    if ($method=='POST') {
+if ($method=='POST') {
         header('Content-Type: application/text');
         //going to this url will create a new course in the db http://myassessment.azurewebsites.net/endpoint.php/course/coursecode/coursename
-        if ($requ->length == 3) {
+        if (sizeof($requ) == 3) {
             if ($requ[0] == "course"){
                 $query ="INSERT INTO course(code,coursename)VALUES('$requ[1]','$requ[2]')";
                 $result = $link->query($query);
@@ -49,7 +49,7 @@ if ($method=='GET') {
                  }
 
             }
-        elseif ($requ->length !=3){
+        elseif (sizeof($requ) !=3){
             echo 'Please provide the required parameters in the URL in the format /course/coursecode/coursename';
         }
 }/* else {
