@@ -5,12 +5,15 @@
  * Date: 26/04/2017
  * Time: 13:02
  */
-$req = $_GET['query'];
-$request = strtolower($req);
+
+
+$url = explode ("/", substr($_SERVER['PATH_INFO'], 1));
+print_r($url);
+
 header('Content-Type: application/json');
 include('db.php');
 if (!empty($request)) {
-    if (($request == "course")) {
+    if (($url[0] == "course")) {
         //going to this url will return all course in the db http://myassessment.azurewebsites.net/endpoint.php?query=course
         $query = "SELECT * FROM course";
         $result = $link->query($query);
