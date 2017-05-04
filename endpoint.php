@@ -30,7 +30,7 @@ if ($method=='GET') {
             echo $jason;
         }
     }elseif ($requ->length <1){
-        echo 'Please provide a parameter in the URL'
+        echo 'Please provide a parameter in the URL';
     }
 }/* else {
             $jason = array("message" => "No Records Found for Your Query");
