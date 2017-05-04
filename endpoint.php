@@ -29,8 +29,8 @@ if ($method=='GET') {
             $jason = json_encode($dataArray);
             echo $jason;
         }
-    } elseif ((sizeof($requ) < 1)||(sizeof($requ)>1)) {
-        echo 'Please provide a parameter in the URL';
+    } elseif ((empty($requ[0])||(sizeof($requ)>1)) {
+        echo 'Please provide the correct parameter in the URL';
     }
 }
 if ($method=='POST') {
