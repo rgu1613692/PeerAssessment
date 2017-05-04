@@ -73,3 +73,23 @@ if ($method=='PUT') {
         echo 'Please provide the required parameters in the URL in the format /course/coursecode/coursename';
     }
 }
+if ($method=='DELETE') {
+    header('Content-Type: application/text');
+    //going to this url will create a new course in the db http://myassessment.azurewebsites.net/endpoint.php/course/courseid
+    if (sizeof($requ) == 4) {
+        if ($requ[0] == "course"){
+            $query ="DELETE FROM course WHERE courseid ='$requ[1]'";
+            $result = $link->query($query);
+            if ($result) {
+                header("HTTP/1.1 200 OK");
+                echo 'success';
+            }else{
+                echo "something went wrong make sure your content is unique";
+            }
+        }
+
+    }
+    elseif (sizeof($requ) !=3){
+        echo 'Please provide the required parameters in the URL in the format /course/coursecode/coursename';
+    }
+}
