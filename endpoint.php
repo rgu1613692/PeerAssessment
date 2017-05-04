@@ -11,7 +11,7 @@
 $method = $_SERVER['REQUEST_METHOD'];
 $requ = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
 $requ = array_map('strtolower', $requ);
- print_r($requ);
+// print_r($requ);
 
 include('db.php');
 if ($method=='GET') {
