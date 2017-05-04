@@ -7,8 +7,8 @@
  */
 
 
-$url = explode ("/", substr($_SERVER['PATH_INFO'], 1));
-echo $_SERVER['REQUEST_URI'];
+$url = explode ("/", substr(@$_SERVER['PATH_INFO'], 1));
+
 print_r($url);
 
 header('Content-Type: application/json');
