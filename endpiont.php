@@ -12,7 +12,7 @@ print_r($url);
 
 header('Content-Type: application/json');
 include('db.php');
-if (!empty($request)) {
+if (true) {
     if (($url[0] == "course")) {
         //going to this url will return all course in the db http://myassessment.azurewebsites.net/endpoint.php?query=course
         $query = "SELECT * FROM course";
