@@ -28,7 +28,11 @@ if ($method=='GET') {
             $jason = json_encode($dataArray);
             //$jason = indent($jason);
             echo $jason;
-        }}}/* else {
+        }
+    }elseif ($requ->length <1){
+        echo 'Please provide a parameter in the URL'
+    }
+}/* else {
             $jason = array("message" => "No Records Found for Your Query");
             echo $jason;
         }
