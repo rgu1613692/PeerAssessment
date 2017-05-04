@@ -78,6 +78,7 @@ if ($method=='DELETE') {
     //going to this url will create a new course in the db http://myassessment.azurewebsites.net/endpoint.php/course/courseid
     if (sizeof($requ) == 4) {
         if ($requ[0] == "course"){
+
             $query ="DELETE FROM course WHERE courseid ='$requ[1]'";
             $result = $link->query($query);
             if ($result) {
